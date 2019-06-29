@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <title>Address to GEO code</title>
+    <head>
+        <link href="../static/main.css" rel="stylesheet">
+
+    </head>
+    <body class="container">
+            <div class="container">
+                <h1>Super Geocoder</h1>
+                <h3>Upload uw CSV file. <br>De gegevens bevat minimaal een adres in een kolom met de naam <em>address</em> of <em>Address</em></h3>
+                    <form action="{{url_for('success_table')}}" method="POST" enctype="multipart/form-data">
+                    <input type="file" accept=".csv" name="file" />
+                    <button type="submit"> Submit </button>
+                    </form>
+                <div class="output">
+                    {% if warn %}
+                        <div class="warning">{{warn|safe}}</div>
+                    {% endif %}    
+                    {{tbl|safe}}
+
+                    {{text|safe}}
+                    {% include btn ignore missing %}
+                </div>
+            </div>
+    </body>
+</html>
+
+
